@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Wonders_of_Space1
 {
-    public partial class Form1 : Form
+    public partial class FrmBurn : Form
     {
-        public Form1()
+        public FrmBurn()
         {
             InitializeComponent();
         }

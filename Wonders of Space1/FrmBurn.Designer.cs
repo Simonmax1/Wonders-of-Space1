@@ -1,6 +1,6 @@
 ﻿namespace Wonders_of_Space1
 {
-    partial class Form1
+    partial class FrmBurn
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.PnlGame = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // PnlGame
+            // 
+            this.PnlGame.BackColor = System.Drawing.Color.Silver;
+            this.PnlGame.Location = new System.Drawing.Point(42, 32);
+            this.PnlGame.Name = "PnlGame";
+            this.PnlGame.Size = new System.Drawing.Size(500, 400);
+            this.PnlGame.TabIndex = 0;
+            // 
+            // FrmBurn
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(578, 444);
+            this.Controls.Add(this.PnlGame);
+            this.Name = "FrmBurn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel PnlGame;
     }
 }
 
