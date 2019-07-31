@@ -23,8 +23,18 @@ namespace Wonders_of_Space1
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
         Image Meteors = Image.FromFile(Application.StartupPath + @"\Meteors.png");
 
-        
-        public FrmBurn()
+        private void PnlGame_Paint(object sender, PaintEventArgs e)
+        {
+            // get the methods from the graphic's class to paint on the panel
+            g = e.Graphics;
+            // use the DrawImage method to draw the Aircraft on the panel
+            g.DrawImage(Aircraft, area);
+            //use the DrawImage method to draw the Meteor on the panel
+            g.DrawImage(Meteors, area1);
+            //use the DrawImage method to draw the Satellites on the panel
+            g.DrawImage(Satellites, area6);
+        }
+            public FrmBurn()
         {
             InitializeComponent();
             area = new Rectangle(x2, y2, 30, 30);//Aircraft's rectangle

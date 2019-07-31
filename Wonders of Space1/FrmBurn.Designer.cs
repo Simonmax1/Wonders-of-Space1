@@ -38,6 +38,7 @@
             this.PnlGame.Name = "PnlGame";
             this.PnlGame.Size = new System.Drawing.Size(500, 400);
             this.PnlGame.TabIndex = 0;
+            this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
             // 
             // FrmBurn
             // 
