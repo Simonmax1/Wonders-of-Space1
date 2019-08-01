@@ -16,7 +16,7 @@ namespace Wonders_of_Space1
         int x = 20, y = 20; // strating position of Meteors
         int x1 = 35, y1 = 35;//strating position of Satellites
         //Declare the rectangles to display the Aircraft,Meteors and Satellites in 
-        Rectangle area, area1, area2, area3, area4, area5, area6, area7, area8, area9, area10;
+        Rectangle area, area1, area2, area3, area4, area5, area6, area7, area8, area9, area10; 
         int x2 = 50, y2 = 290;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
@@ -34,11 +34,13 @@ namespace Wonders_of_Space1
             //use the DrawImage method to draw the Satellites on the panel
             g.DrawImage(Satellites, area6);
         }
-            public FrmBurn()
+
+        public FrmBurn()
         {
             InitializeComponent();
-            area = new Rectangle(x2, y2, 30, 30);//Aircraft's rectangle
+            area = new Rectangle(x2, y2, 20,20);//Aircraft's rectangle
             area1 = new Rectangle(x, y, 20, 20);//Meteor1's rectangle
+            area1.Y += speed1;
             area2 = new Rectangle(x, y, 21, 21);//Meteor2's rectangle
             area3 = new Rectangle(x, y, 22, 22);//Meteor3's rectangle
             area4 = new Rectangle(x, y, 23, 23);//Meteor4's rectnagle
@@ -49,6 +51,23 @@ namespace Wonders_of_Space1
             area9 = new Rectangle(x1, x1, 38, 38);//Satellite4's rectangle
             area10 = new Rectangle(x1, y1, 39, 39);//Satellite5's rectangle
 
+            speed1 = speed.Next(5, 10);//meteor1 speed will be between 5 and 10
+        }
+
+        private void Tmrmeteor_Tick(object sender, EventArgs e)
+        {
+            area1.Y += speed;//move the area(meteor) down the panel
+
+            int x = 20, y = 20;//starting position of Meteors
+            Random speed = new Random();
+            int speed1;
+
+            if(area1.Y > PnlGame.Height)
+            {
+                area1.Y = 20;
+            }
+
+            PnlGame.Invalidate();//meke the paint even fire to redraw the panel
         }
     }
 }

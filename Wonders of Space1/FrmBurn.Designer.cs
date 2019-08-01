@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PnlGame = new System.Windows.Forms.Panel();
+            this.Tmrmeteor = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PnlGame
@@ -39,6 +41,11 @@
             this.PnlGame.Size = new System.Drawing.Size(500, 400);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
+            // 
+            // Tmrmeteor
+            // 
+            this.Tmrmeteor.Enabled = true;
+            this.Tmrmeteor.Tick += new System.EventHandler(this.Tmrmeteor_Tick);
             // 
             // FrmBurn
             // 
@@ -56,6 +63,7 @@
         #endregion
 
         private System.Windows.Forms.Panel PnlGame;
+        private System.Windows.Forms.Timer Tmrmeteor;
     }
 }
 
