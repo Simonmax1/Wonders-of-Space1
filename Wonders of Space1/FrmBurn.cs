@@ -25,18 +25,6 @@ namespace Wonders_of_Space1
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
         Image Meteors = Image.FromFile(Application.StartupPath + @"\Meteors.png");
 
-        private void PnlGame_Paint(object sender, PaintEventArgs e)
-        {
-            // get the methods from the graphic's class to paint on the panel
-            g = e.Graphics;
-            // use the DrawImage method to draw the Aircraft on the panel
-            g.DrawImage(Aircraft, area);
-            //use the DrawImage method to draw the Meteor on the panel
-            g.DrawImage(Meteors, area1);
-            //use the DrawImage method to draw the Satellites on the panel
-            g.DrawImage(Satellites, area6);
-        }
-
         public FrmBurn()
         {
             InitializeComponent();
@@ -53,6 +41,26 @@ namespace Wonders_of_Space1
             area10 = new Rectangle(x1, y1, 39, 39);//Satellite5's rectangle
 
             speed1 = speed.Next(5, 10);
+        }
+
+        private void PnlGame_Paint(object sender, PaintEventArgs e)
+        {
+            // get the methods from the graphic's class to paint on the panel
+            g = e.Graphics;
+            // use the DrawImage method to draw the Aircraft on the panel
+            g.DrawImage(Aircraft, area);
+            //use the DrawImage method to draw the Meteor on the panel
+            g.DrawImage(Meteors, area1);
+            g.DrawImage(Meteors, area2);
+            g.DrawImage(Meteors, area3);
+            g.DrawImage(Meteors, area4);
+            g.DrawImage(Meteors, area5);
+            //use the DrawImage method to draw the Satellites on the panel
+            g.DrawImage(Satellites, area6);
+            g.DrawImage(Satellites, area7);
+            g.DrawImage(Satellites, area8);
+            g.DrawImage(Satellites, area9);
+            g.DrawImage(Satellites, area10);
         }
 
         private void Tmrmeteor_Tick(object sender, EventArgs e)
