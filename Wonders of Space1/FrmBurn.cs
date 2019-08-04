@@ -18,7 +18,7 @@ namespace Wonders_of_Space1
         //Declare the rectangles to display the Aircraft,Meteors and Satellites in 
         Rectangle area, area1, area2, area3, area4, area5, area6, area7, area8, area9, area10;
         Random speed = new Random();
-        int speed1;
+        int speed1,speed2,speed3,speed4,speed5,speed6,speed7,speed8,speed9,speed10;
         int x2 = 50, y2 = 290;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
@@ -41,6 +41,15 @@ namespace Wonders_of_Space1
             area10 = new Rectangle(x1, y1, 39, 39);//Satellite5's rectangle
 
             speed1 = speed.Next(5, 10);
+            speed2 = speed.Next(5, 10);
+            speed3 = speed.Next(5, 10);
+            speed4 = speed.Next(5, 10);
+            speed5 = speed.Next(5, 10);
+            speed6 = speed.Next(5, 10);
+            speed7 = speed.Next(5, 10);
+            speed8 = speed.Next(5, 10);
+            speed9 = speed.Next(5, 10);
+            speed10 = speed.Next(5, 10);
         }
 
         private void PnlGame_Paint(object sender, PaintEventArgs e)
@@ -66,12 +75,13 @@ namespace Wonders_of_Space1
         private void Tmrmeteor_Tick(object sender, EventArgs e)
         {
             int x = 20, y = 20;//starting position of Meteors
-            area1.Y += speed1;//move the area(meteor) down the panel
+            area2.Y += speed2;//move the area(meteor) down the panel
             
-            if (area1.Y > PnlGame.Height)
+            if (area2.Y > PnlGame.Height)
             {
-                area1.Y = 20;
+                area2.Y = 20;
             }
+            
             PnlGame.Invalidate();//meke the paint even fire to redraw the panel
 
         }
