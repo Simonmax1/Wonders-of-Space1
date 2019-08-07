@@ -74,14 +74,78 @@ namespace Wonders_of_Space1
 
         private void Tmrmeteor_Tick(object sender, EventArgs e)
         {
-            int x = 20, y = 20;//starting position of Meteors
-            area2.Y += speed2;//move the area(meteor) down the panel
             
-            if (area2.Y > PnlGame.Height)
+            area1.Y += speed1;//move the area(meteor) down the panel
+            
+            if (area1.Y > PnlGame.Height)
             {
-                area2.Y = 20;
+                area1.Y = 20;
             }
             
+            area2.Y += speed2;//move the area(meteor) down the panel
+
+            if (area2.Y > PnlGame.Height)
+            {
+                area2.Y = 21;
+            }
+            
+            area3.Y += speed3;//move the area(meteor) down the panel
+
+            if (area3.Y > PnlGame.Height)
+            {
+                area3.Y = 22;
+            }
+            
+            area4.Y += speed4;//move the area(meteor) down the panel
+
+            if (area1.Y > PnlGame.Height)
+            {
+                area4.Y = 23;
+            }
+            
+            area5.Y += speed5;//move the area(meteor) down the panel
+
+            if (area5.Y > PnlGame.Height)
+            {
+                area5.Y = 24;
+            }
+            
+            area6.Y += speed6;//move the area(meteor) down the panel
+
+            if (area6.Y > PnlGame.Height)
+            {
+                area6.Y = 35;
+            }
+           
+            area7.Y += speed7;//move the area(meteor) down the panel
+
+            if (area7.Y > PnlGame.Height)
+            {
+                area7.Y = 36;
+            }
+            
+            area8.Y += speed8;//move the area(meteor) down the panel
+
+            if (area8.Y > PnlGame.Height)
+            {
+                area8.Y = 37;
+            }
+       
+            area9.Y += speed9;//move the area(meteor) down the panel
+
+            if (area9.Y > PnlGame.Height)
+            {
+                area9.Y = 38;
+            }
+           
+            area10.Y += speed10;//move the area(meteor) down the panel
+
+            if (area10.Y > PnlGame.Height)
+            {
+                area10.Y = 38;
+            }
+
+
             PnlGame.Invalidate();//meke the paint even fire to redraw the panel
 
         }
