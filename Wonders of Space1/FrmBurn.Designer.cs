@@ -36,9 +36,9 @@
             // PnlGame
             // 
             this.PnlGame.BackColor = System.Drawing.Color.Silver;
-            this.PnlGame.Location = new System.Drawing.Point(42, 32);
+            this.PnlGame.Location = new System.Drawing.Point(12, 85);
             this.PnlGame.Name = "PnlGame";
-            this.PnlGame.Size = new System.Drawing.Size(500, 400);
+            this.PnlGame.Size = new System.Drawing.Size(407, 347);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
             // 
