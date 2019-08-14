@@ -32,11 +32,12 @@
             this.PnlGame = new System.Windows.Forms.Panel();
             this.Tmrmeteor = new System.Windows.Forms.Timer(this.components);
             this.Tmrsat = new System.Windows.Forms.Timer(this.components);
+            this.Tmraircraft = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PnlGame
             // 
-            this.PnlGame.BackColor = System.Drawing.Color.Silver;
+            this.PnlGame.BackColor = System.Drawing.Color.Black;
             this.PnlGame.Location = new System.Drawing.Point(12, 85);
             this.PnlGame.Name = "PnlGame";
             this.PnlGame.Size = new System.Drawing.Size(686, 498);
@@ -52,6 +53,11 @@
             // 
             this.Tmrsat.Enabled = true;
             // 
+            // Tmraircraft
+            // 
+            this.Tmraircraft.Enabled = true;
+            this.Tmraircraft.Tick += new System.EventHandler(this.Tmraircraft_Tick_1);
+            // 
             // FrmBurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -61,6 +67,8 @@
             this.Name = "FrmBurn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmBurn_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmBurn_KeyUp);
             this.ResumeLayout(false);
 
         }
@@ -70,6 +78,7 @@
         private System.Windows.Forms.Panel PnlGame;
         private System.Windows.Forms.Timer Tmrmeteor;
         private System.Windows.Forms.Timer Tmrsat;
+        private System.Windows.Forms.Timer Tmraircraft;
     }
 }
 
