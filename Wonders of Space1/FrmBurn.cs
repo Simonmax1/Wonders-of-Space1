@@ -23,6 +23,9 @@ namespace Wonders_of_Space1
         Random speed = new Random();
         int[] meteorspeed = new int[5];
         int[] satspeed = new int[5];
+
+        int scorenum = 0;
+        int livesnum = 3;
         
         int x2 = 50, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
@@ -60,6 +63,11 @@ namespace Wonders_of_Space1
 
 
             InitializeComponent();
+        }
+
+        private void score_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void Tmraircraft_Tick_1(object sender, EventArgs e)
@@ -139,11 +147,21 @@ namespace Wonders_of_Space1
 
             for (int i=0; i<=4; i++)
             {
-
                 areamet[i].X += meteorspeed[i];
+
+                if (areamet[i].IntersectsWith(areaAircraft))
+                { // If the surfer collides with any shark
+                    areamet[i].X = 25; // Move the shark back to the begining of the panel
+                    livesnum -= 1; // Reduce lives count by one
+                    lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
+                }
+
+
 
                 if (areamet[i].X > PnlGame.Width)
                 { // If the shark reaches the end of the panel
+                    scorenum += 1;
+                    score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
                     areamet[i].X = 25; // Move the shark back to the begining of the panel
                 }
             }
@@ -162,10 +180,21 @@ namespace Wonders_of_Space1
 
                 areasat[i].Y += satspeed[i];
 
+                if (areasat[i].IntersectsWith(areaAircraft))
+                { // If the surfer collides with any shark
+                    areasat[i].Y = 25; // Move the shark back to the begining of the panel
+                    livesnum -= 1; // Reduce lives count by one
+                    lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
+                }
+
                 if (areasat[i].X > PnlGame.Height)
                 { // If the shark reaches the end of the panel
+                    scorenum += 1;
+                    score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
                     areasat[i].Y = 25; // Move the shark back to the begining of the panel
+                    
                 }
+
             }
 
             PnlGame.Invalidate();//meke the paint even fire to redraw the panel
