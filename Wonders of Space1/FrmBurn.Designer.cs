@@ -40,6 +40,7 @@
             this.username = new System.Windows.Forms.TextBox();
             this.startbtn = new System.Windows.Forms.Button();
             this.TmrBullet = new System.Windows.Forms.Timer(this.components);
+            this.level = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // PnlGame
@@ -48,7 +49,7 @@
             this.PnlGame.BackgroundImage = global::Wonders_of_Space1.Properties.Resources.Background;
             this.PnlGame.Location = new System.Drawing.Point(12, 12);
             this.PnlGame.Name = "PnlGame";
-            this.PnlGame.Size = new System.Drawing.Size(640, 584);
+            this.PnlGame.Size = new System.Drawing.Size(610, 567);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
             // 
@@ -71,6 +72,7 @@
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(100, 26);
             this.score.TabIndex = 1;
+            this.score.Text = "0";
             this.score.TextChanged += new System.EventHandler(this.score_TextChanged);
             // 
             // lives
@@ -80,6 +82,7 @@
             this.lives.Name = "lives";
             this.lives.Size = new System.Drawing.Size(100, 26);
             this.lives.TabIndex = 2;
+            this.lives.Text = "20";
             // 
             // label1
             // 
@@ -121,11 +124,21 @@
             this.TmrBullet.Enabled = true;
             this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
             // 
+            // level
+            // 
+            this.level.Enabled = false;
+            this.level.Location = new System.Drawing.Point(672, 268);
+            this.level.Name = "level";
+            this.level.Size = new System.Drawing.Size(100, 26);
+            this.level.TabIndex = 7;
+            this.level.Text = "1";
+            // 
             // FrmBurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 636);
+            this.Controls.Add(this.level);
             this.Controls.Add(this.startbtn);
             this.Controls.Add(this.username);
             this.Controls.Add(this.label2);
@@ -156,6 +169,7 @@
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.Button startbtn;
         private System.Windows.Forms.Timer TmrBullet;
+        private System.Windows.Forms.TextBox level;
     }
 }
 

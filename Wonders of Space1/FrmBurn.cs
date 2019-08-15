@@ -14,8 +14,8 @@ namespace Wonders_of_Space1
     public partial class FrmBurn : Form
     {
         Graphics g; // declare the graphics objects
-        int x = 20, y = 20; // strating position of Meteors
-        int x1 = 35, y1 = 35;//strating position of Satellites
+        int x = -35, y = 20; // strating position of Meteors
+        int x1 = 35, y1 = -35;//strating position of Satellites
         //Declare the rectangles to display the Aircraft,Meteors and Satellites in 
         Rectangle areaAircraft;
         Rectangle[] areamet = new Rectangle[5];//area[1]to area[10] 
@@ -26,9 +26,9 @@ namespace Wonders_of_Space1
         int[] satspeed = new int[5];
 
         int scorenum = 0;
-        int livesnum = 3;
+        int livesnum = 200;
         
-        int x2 = 500, y2 = 100;//starting position of of the Aircraft
+        int x2 =350, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
@@ -38,25 +38,50 @@ namespace Wonders_of_Space1
 
         int usermamevalid = 0;
 
+        int levelnum = 1;
+
 
 
         public FrmBurn()
         {
+            InitializeComponent();
 
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
 
             areaAircraft = new Rectangle(x2, y2, 30, 30);
   
             
             for (int i = 0; i <= 4; i++)
             {
-                areamet[i] = new Rectangle(y,x + 70 * i, 40, 40);
-                meteorspeed[i] = speed.Next(6, 15);
+                areamet[i] = new Rectangle(y,x + 70 * i, 35, 35);
+
+
+                if (levelnum == 1)
+                {
+                    meteorspeed[i] = speed.Next(10, 22);
+                }
+
+                if (levelnum > 1)
+                {
+                    meteorspeed[i] = speed.Next(70, 100);
+                }
+
             }
             
             for (int i = 0; i <= 4; i++)
             {
                 areasat[i] = new Rectangle(x1 + 70 * i, y1, 35, 35);
-                satspeed[i] = speed1.Next(6, 15);
+
+                if (levelnum == 1)
+                {
+                    satspeed[i] = speed1.Next(6, 15);
+                } 
+
+                if (levelnum == 2)
+                {
+                    satspeed[i] = speed1.Next(20, 30);
+                }
+
 
             }
 
@@ -65,7 +90,7 @@ namespace Wonders_of_Space1
 
 
 
-            InitializeComponent();
+            
         }
 
         private void score_TextChanged(object sender, EventArgs e)
@@ -73,7 +98,8 @@ namespace Wonders_of_Space1
 
         }
 
-        
+
+
 
         private void Tmraircraft_Tick_1(object sender, EventArgs e)
         {
@@ -189,12 +215,28 @@ namespace Wonders_of_Space1
                 { // If the shark reaches the end of the panel
                     scorenum += 1;
                     score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
-                    areamet[i].X = 25; // Move the shark back to the begining of the panel
+                    areamet[i].X = -35; // Move the shark back to the begining of the panel
+                    CheckScore();
                 }
             }
 
             PnlGame.Invalidate();//meke the paint even fire to redraw the panel
 
+        }
+
+
+        private void CheckScore()
+        { // Initiate the CheckScore method/ function
+            if (scorenum % 20 == 0)
+            { // If the score is divisible by 25
+                levelnum += 1; // Add one to level count
+                level.Text = levelnum.ToString(); // Convert the level to a string, then display it on the LvlTxt textbox
+
+
+                scorenum = 0; // Set the score count to 0
+                score.Text = scorenum.ToString(); // Convert the score to a string, then display it on the ScoreTxt textbox
+
+            }
         }
 
 
@@ -217,8 +259,8 @@ namespace Wonders_of_Space1
                 { // If the shark reaches the end of the panel
                     scorenum += 1;
                     score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
-                    areasat[i].Y = 25; // Move the shark back to the begining of the panel
-
+                    areasat[i].Y = -35; // Move the shark back to the begining of the panel
+                    CheckScore();
                 }
 
             }
