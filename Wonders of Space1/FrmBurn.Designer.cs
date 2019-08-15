@@ -39,14 +39,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.startbtn = new System.Windows.Forms.Button();
+            this.TmrBullet = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PnlGame
             // 
-            this.PnlGame.BackColor = System.Drawing.Color.Black;
-            this.PnlGame.Location = new System.Drawing.Point(12, 85);
+            this.PnlGame.BackColor = System.Drawing.Color.Bisque;
+            this.PnlGame.BackgroundImage = global::Wonders_of_Space1.Properties.Resources.Background;
+            this.PnlGame.Location = new System.Drawing.Point(12, 12);
             this.PnlGame.Name = "PnlGame";
-            this.PnlGame.Size = new System.Drawing.Size(640, 498);
+            this.PnlGame.Size = new System.Drawing.Size(640, 584);
             this.PnlGame.TabIndex = 0;
             this.PnlGame.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlGame_Paint);
             // 
@@ -114,6 +116,11 @@
             this.startbtn.UseVisualStyleBackColor = true;
             this.startbtn.Click += new System.EventHandler(this.startbtn_Click);
             // 
+            // TmrBullet
+            // 
+            this.TmrBullet.Enabled = true;
+            this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
+            // 
             // FrmBurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -148,6 +155,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.Button startbtn;
+        private System.Windows.Forms.Timer TmrBullet;
     }
 }
 

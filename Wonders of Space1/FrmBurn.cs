@@ -28,7 +28,7 @@ namespace Wonders_of_Space1
         int scorenum = 0;
         int livesnum = 3;
         
-        int x2 = 550, y2 = 100;//starting position of of the Aircraft
+        int x2 = 500, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
@@ -161,6 +161,12 @@ namespace Wonders_of_Space1
             }
         }
 
+        private void TmrBullet_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        
         private void Tmrmeteor_Tick(object sender, EventArgs e)
         {
 
