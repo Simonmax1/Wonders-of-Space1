@@ -37,6 +37,8 @@
             this.lives = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.TextBox();
+            this.startbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PnlGame
@@ -50,20 +52,19 @@
             // 
             // Tmrmeteor
             // 
-            this.Tmrmeteor.Enabled = true;
             this.Tmrmeteor.Tick += new System.EventHandler(this.Tmrmeteor_Tick);
             // 
             // Tmrsat
             // 
-            this.Tmrsat.Enabled = true;
+            this.Tmrsat.Tick += new System.EventHandler(this.Tmrsat_Tick_1);
             // 
             // Tmraircraft
             // 
-            this.Tmraircraft.Enabled = true;
             this.Tmraircraft.Tick += new System.EventHandler(this.Tmraircraft_Tick_1);
             // 
             // score
             // 
+            this.score.Enabled = false;
             this.score.Location = new System.Drawing.Point(658, 85);
             this.score.Name = "score";
             this.score.Size = new System.Drawing.Size(100, 26);
@@ -72,6 +73,7 @@
             // 
             // lives
             // 
+            this.lives.Enabled = false;
             this.lives.Location = new System.Drawing.Point(672, 202);
             this.lives.Name = "lives";
             this.lives.Size = new System.Drawing.Size(100, 26);
@@ -95,11 +97,30 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Score";
             // 
+            // username
+            // 
+            this.username.Location = new System.Drawing.Point(662, 322);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(100, 26);
+            this.username.TabIndex = 5;
+            // 
+            // startbtn
+            // 
+            this.startbtn.Location = new System.Drawing.Point(662, 408);
+            this.startbtn.Name = "startbtn";
+            this.startbtn.Size = new System.Drawing.Size(127, 27);
+            this.startbtn.TabIndex = 6;
+            this.startbtn.Text = "Start Game";
+            this.startbtn.UseVisualStyleBackColor = true;
+            this.startbtn.Click += new System.EventHandler(this.startbtn_Click);
+            // 
             // FrmBurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 636);
+            this.Controls.Add(this.startbtn);
+            this.Controls.Add(this.username);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lives);
@@ -125,6 +146,8 @@
         private System.Windows.Forms.TextBox lives;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.Button startbtn;
     }
 }
 

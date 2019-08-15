@@ -21,19 +21,22 @@ namespace Wonders_of_Space1
         Rectangle[] areamet = new Rectangle[5];//area[1]to area[10] 
         Rectangle[] areasat = new Rectangle[5];//area[1]to area[10]
         Random speed = new Random();
+        Random speed1 = new Random();
         int[] meteorspeed = new int[5];
         int[] satspeed = new int[5];
 
         int scorenum = 0;
         int livesnum = 3;
         
-        int x2 = 50, y2 = 100;//starting position of of the Aircraft
+        int x2 = 550, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
         Image Meteors = Image.FromFile(Application.StartupPath + @"\Meteors.png");
 
         bool left, right, up, down;
+
+        int usermamevalid = 0;
 
 
 
@@ -50,10 +53,10 @@ namespace Wonders_of_Space1
                 meteorspeed[i] = speed.Next(6, 15);
             }
             
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 areasat[i] = new Rectangle(x1 + 70 * i, y1, 35, 35);
-                satspeed[i] = speed.Next(6, 15);
+                satspeed[i] = speed1.Next(6, 15);
 
             }
 
@@ -69,6 +72,8 @@ namespace Wonders_of_Space1
         {
 
         }
+
+        
 
         private void Tmraircraft_Tick_1(object sender, EventArgs e)
         {
@@ -141,6 +146,21 @@ namespace Wonders_of_Space1
             
         }
 
+        private void startbtn_Click(object sender, EventArgs e)
+        {
+            if (usermamevalid == 0)
+            {
+                Tmrmeteor.Enabled = true;
+                Tmrsat.Enabled = true;
+                Tmraircraft.Enabled = true;
+
+                username.Enabled = false;
+                startbtn.Enabled = false;
+
+
+            }
+        }
+
         private void Tmrmeteor_Tick(object sender, EventArgs e)
         {
 
@@ -154,6 +174,7 @@ namespace Wonders_of_Space1
                     areamet[i].X = 25; // Move the shark back to the begining of the panel
                     livesnum -= 1; // Reduce lives count by one
                     lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
+                    CheckLives();
                 }
 
 
@@ -171,10 +192,8 @@ namespace Wonders_of_Space1
         }
 
 
-        private void Tmrsat_Tick(object sender, EventArgs e)
+        private void Tmrsat_Tick_1(object sender, EventArgs e)
         {
-
-
             for (int i = 0; i <= 4; i++)
             {
 
@@ -185,21 +204,89 @@ namespace Wonders_of_Space1
                     areasat[i].Y = 25; // Move the shark back to the begining of the panel
                     livesnum -= 1; // Reduce lives count by one
                     lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
+                    CheckLives();
                 }
 
-                if (areasat[i].X > PnlGame.Height)
+                if (areasat[i].Y > PnlGame.Height)
                 { // If the shark reaches the end of the panel
                     scorenum += 1;
                     score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
                     areasat[i].Y = 25; // Move the shark back to the begining of the panel
-                    
+
                 }
 
             }
 
             PnlGame.Invalidate();//meke the paint even fire to redraw the panel
-
         }
+
+
+
+
+        private void username_TextChanged(object sender, EventArgs e)
+        { // On change up of the textbox
+            string context = username.Text; // Create a string with the value of the TbUsername value
+            bool isletter = true; // Create a bool that sets isletter to ture
+
+            if (context == "")
+            { // If the username textbox is empty
+                usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+            }
+
+            else
+            { // The username is not empty
+                usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+            }
+
+            for (int i = 0; i < context.Length; i++)
+            {
+                if (!char.IsLetter(context[i]))
+                { // If the current character is not a letter
+                    isletter = false; // Make isletter false
+                    usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+                }
+
+                else
+                {
+                    usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+                }
+            }
+
+            // if not a letter clear the textbox and focus on it
+            // to enter name again
+            if (isletter == false)
+            { // If isletter is equal to false 
+                username.Clear(); // Remove all characters in the username textbox 
+                username.Focus(); // Focuse the user onto the username textbox to set the user to editing the username
+
+                usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+            }
+
+            else
+            {
+                usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+            }
+        }
+
+
+
+
+        private void CheckLives()
+        { // Initiate the CheckLives method/ function
+            if (livesnum == 0)
+            { // If the user has no lives left
+                Tmrmeteor.Enabled = false;
+                Tmrsat.Enabled = false;
+                Tmraircraft.Enabled = false;
+
+
+                MessageBox.Show("Game Over!! You reached score " + scorenum + "!"); // Display the game over message, telling the user their level and score count
+                this.Close(); // Close the form
+            }
+        }
+
+
+
 
         private void FrmBurn_KeyUp(object sender, KeyEventArgs e)
         {
