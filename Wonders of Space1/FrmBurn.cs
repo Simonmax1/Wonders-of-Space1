@@ -56,14 +56,19 @@ namespace Wonders_of_Space1
                 areamet[i] = new Rectangle(y,x + 70 * i, 35, 35);
 
 
-                if (levelnum == 1)
+                if (scorenum == 20)
                 {
-                    meteorspeed[i] = speed.Next(10, 22);
+                    Tmrmeteor.Interval -= 500;
                 }
 
-                if (levelnum > 1)
+                if (levelnum == 2)
                 {
-                    meteorspeed[i] = speed.Next(70, 100);
+                    Tmrmeteor.Interval -= 700;
+                }
+
+                if (levelnum > 2)
+                {
+                    Tmrmeteor.Interval -= 900;
                 }
 
             }

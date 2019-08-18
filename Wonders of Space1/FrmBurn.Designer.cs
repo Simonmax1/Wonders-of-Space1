@@ -55,6 +55,7 @@
             // 
             // Tmrmeteor
             // 
+            this.Tmrmeteor.Interval = 1000;
             this.Tmrmeteor.Tick += new System.EventHandler(this.Tmrmeteor_Tick);
             // 
             // Tmrsat
