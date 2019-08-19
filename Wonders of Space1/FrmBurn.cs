@@ -28,7 +28,7 @@ namespace Wonders_of_Space1
         int scorenum = 0;
         int livesnum = 200;
         
-        int x2 =350, y2 = 100;//starting position of of the Aircraft
+        int x2 =250, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
         Image Satellites = Image.FromFile(Application.StartupPath + @"\Satellites.png");
@@ -48,7 +48,7 @@ namespace Wonders_of_Space1
 
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
 
-            areaAircraft = new Rectangle(x2, y2, 30, 30);
+            areaAircraft = new Rectangle(x2, y2, 40, 40);
   
             
             for (int i = 0; i <= 4; i++)
@@ -56,19 +56,15 @@ namespace Wonders_of_Space1
                 areamet[i] = new Rectangle(y,x + 70 * i, 35, 35);
 
 
-                if (scorenum == 20)
-                {
-                    Tmrmeteor.Interval -= 500;
-                }
 
-                if (levelnum == 2)
+                if (levelnum == 1)
                 {
-                    Tmrmeteor.Interval -= 700;
+                    meteorspeed[i] = speed.Next(6, 15);
                 }
 
                 if (levelnum > 2)
                 {
-                    Tmrmeteor.Interval -= 900;
+                    meteorspeed[i] = speed.Next(20, 50);
                 }
 
             }
@@ -229,7 +225,7 @@ namespace Wonders_of_Space1
 
         }
 
-
+      
         private void CheckScore()
         { // Initiate the CheckScore method/ function
             if (scorenum % 20 == 0)
@@ -333,7 +329,7 @@ namespace Wonders_of_Space1
                 Tmraircraft.Enabled = false;
 
 
-                MessageBox.Show("Game Over!! You reached score " + scorenum + "!"); // Display the game over message, telling the user their level and score count
+                MessageBox.Show("Game Over, " + username.Text + "!! You reached Level " + levelnum + " Score " + scorenum + "!"); // Display the game over message, telling the user their level and score count
                 this.Close(); // Close the form
             }
         }
