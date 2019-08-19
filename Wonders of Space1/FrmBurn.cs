@@ -26,7 +26,7 @@ namespace Wonders_of_Space1
         int[] satspeed = new int[5];
 
         int scorenum = 0;
-        int livesnum = 200;
+        int livesnum = 40;
         
         int x2 =250, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
@@ -39,7 +39,7 @@ namespace Wonders_of_Space1
         int usermamevalid = 0;
 
         int levelnum = 1;
-
+        
 
 
         public FrmBurn()
@@ -49,22 +49,43 @@ namespace Wonders_of_Space1
             typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, PnlGame, new object[] { true });
 
             areaAircraft = new Rectangle(x2, y2, 40, 40);
+             
   
             
             for (int i = 0; i <= 4; i++)
             {
                 areamet[i] = new Rectangle(y,x + 70 * i, 35, 35);
 
-
+                
 
                 if (levelnum == 1)
                 {
-                    meteorspeed[i] = speed.Next(6, 15);
+                    meteorspeed[i] = speed.Next(3,5);
+                }
+                
+                if( levelnum == 2)
+                {
+                    meteorspeed[i] = speed.Next(6,9);
                 }
 
-                if (levelnum > 2)
+                if (levelnum == 3)
                 {
-                    meteorspeed[i] = speed.Next(20, 50);
+                    meteorspeed[i] = speed.Next(12,18);
+                }
+
+                if (levelnum == 4)
+                {
+                    meteorspeed[i] = speed.Next(18, 26);
+                }
+
+                if (levelnum == 5)
+                {
+                    meteorspeed[i] = speed.Next(26, 32);
+                }
+
+                if ( levelnum > 6)
+                {
+                    meteorspeed[i] = speed.Next(26, 32 * 2);
                 }
 
             }
@@ -75,15 +96,38 @@ namespace Wonders_of_Space1
 
                 if (levelnum == 1)
                 {
-                    satspeed[i] = speed1.Next(6, 15);
+                    satspeed[i] = speed1.Next(4,4);
                 } 
 
                 if (levelnum == 2)
                 {
-                    satspeed[i] = speed1.Next(20, 30);
+                    satspeed[i] = speed1.Next(6,6);
                 }
 
+                if (levelnum == 3)
+                {
+                   satspeed[i] = speed.Next(10,10);
+                }
 
+                if (levelnum == 4)
+                {
+                    satspeed[i] = speed.Next(20,20);
+                }
+
+                if (levelnum == 5)
+                {
+                    satspeed[i] = speed.Next(25, 25);
+                }
+
+                if (levelnum == 6)
+                {
+                    satspeed[i] = speed.Next(32, 32);
+                }
+
+                if (levelnum >7)
+                {
+                    satspeed[i] = speed.Next(32, 32 *4);
+                }
             }
 
 
@@ -94,14 +138,7 @@ namespace Wonders_of_Space1
             
         }
 
-        private void score_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
+      
         private void Tmraircraft_Tick_1(object sender, EventArgs e)
         {
             if (left)
@@ -188,12 +225,6 @@ namespace Wonders_of_Space1
             }
         }
 
-        private void TmrBullet_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        
         private void Tmrmeteor_Tick(object sender, EventArgs e)
         {
 
@@ -225,7 +256,8 @@ namespace Wonders_of_Space1
 
         }
 
-      
+       
+
         private void CheckScore()
         { // Initiate the CheckScore method/ function
             if (scorenum % 20 == 0)
@@ -328,7 +360,7 @@ namespace Wonders_of_Space1
                 Tmrsat.Enabled = false;
                 Tmraircraft.Enabled = false;
 
-
+                
                 MessageBox.Show("Game Over, " + username.Text + "!! You reached Level " + levelnum + " Score " + scorenum + "!"); // Display the game over message, telling the user their level and score count
                 this.Close(); // Close the form
             }

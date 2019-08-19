@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
             this.startbtn = new System.Windows.Forms.Button();
-            this.TmrBullet = new System.Windows.Forms.Timer(this.components);
             this.level = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +75,7 @@
             this.score.Size = new System.Drawing.Size(100, 26);
             this.score.TabIndex = 1;
             this.score.Text = "0";
-            this.score.TextChanged += new System.EventHandler(this.score_TextChanged);
+          
             // 
             // lives
             // 
@@ -85,7 +84,7 @@
             this.lives.Name = "lives";
             this.lives.Size = new System.Drawing.Size(100, 26);
             this.lives.TabIndex = 2;
-            this.lives.Text = "20";
+            this.lives.Text = "40";
             // 
             // label1
             // 
@@ -126,11 +125,6 @@
             this.startbtn.Text = "Start Game";
             this.startbtn.UseVisualStyleBackColor = false;
             this.startbtn.Click += new System.EventHandler(this.startbtn_Click);
-            // 
-            // TmrBullet
-            // 
-            this.TmrBullet.Enabled = true;
-            this.TmrBullet.Tick += new System.EventHandler(this.TmrBullet_Tick);
             // 
             // level
             // 
@@ -201,7 +195,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.Button startbtn;
-        private System.Windows.Forms.Timer TmrBullet;
         private System.Windows.Forms.TextBox level;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
