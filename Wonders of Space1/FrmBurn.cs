@@ -20,8 +20,10 @@ namespace Wonders_of_Space1
         Rectangle areaAircraft;
         Rectangle[] areamet = new Rectangle[5];//area[1]to area[10] 
         Rectangle[] areasat = new Rectangle[5];//area[1]to area[10]
-        Random speed = new Random();
-        Random speed1 = new Random();
+        Random speed = new Random(10);
+        Random speed1 = new Random(20);
+        
+   
         int[] meteorspeed = new int[5];
         int[] satspeed = new int[5];
 
@@ -35,6 +37,7 @@ namespace Wonders_of_Space1
         Image Meteors = Image.FromFile(Application.StartupPath + @"\Meteors.png");
 
         bool left, right, up, down;
+        
 
         int usermamevalid = 0;
 
@@ -58,34 +61,34 @@ namespace Wonders_of_Space1
 
                 
 
-                if (levelnum == 1)
+                if (levelnum == 1)//Increases speed of the Meteors when reaching that level 
                 {
-                    meteorspeed[i] = speed.Next(3,5);
+                    meteorspeed[i] = speed.Next(3,5 );
                 }
                 
-                if( levelnum == 2)
+                if( levelnum == 2)//Increases speed of the Meteors when reaching that level and Mulitiply by 1
                 {
-                    meteorspeed[i] = speed.Next(6,9);
+                    meteorspeed[i] = speed.Next(6,9*1);
                 }
 
-                if (levelnum == 3)
+                if (levelnum == 3)//Increases speed of the Meteors when reaching that level and Mulitiply by 2
                 {
-                    meteorspeed[i] = speed.Next(12,18);
+                    meteorspeed [i] = speed.Next(9,16*2);
                 }
 
-                if (levelnum == 4)
+                if (levelnum == 4)//Increases speed of the Meteors when reaching that level and Mulitiply by 2
                 {
-                    meteorspeed[i] = speed.Next(18, 26);
+                    meteorspeed[i] = speed.Next(18, 26*2);
                 }
 
-                if (levelnum == 5)
+                if (levelnum == 5)//Increases speed of the Meteors when reaching that level and Mulitiply by 3
                 {
-                    meteorspeed[i] = speed.Next(26, 32);
+                    meteorspeed[i] = speed.Next(26, 32 *3);
                 }
 
-                if ( levelnum > 6)
+                if ( levelnum > 6)//Increases speed of the Meteors when reaching that level and Mulitiply by 4
                 {
-                    meteorspeed[i] = speed.Next(26, 32 * 2);
+                    meteorspeed[i] = speed.Next(40,80 * 4);
                 }
 
             }
@@ -94,39 +97,39 @@ namespace Wonders_of_Space1
             {
                 areasat[i] = new Rectangle(x1 + 70 * i, y1, 35, 35);
 
-                if (levelnum == 1)
+                if (levelnum == 1)// Increases speed of the Sattilite when reaching that level 
                 {
                     satspeed[i] = speed1.Next(4,4);
                 } 
 
-                if (levelnum == 2)
+                if (levelnum == 2)// Increases speed ofthe Sattilite when reaching that level and Mulitiply by 1
                 {
-                    satspeed[i] = speed1.Next(6,6);
+                    satspeed[i] = speed1.Next(6,6*1);
                 }
 
-                if (levelnum == 3)
+                if (levelnum == 3)// Increases speed of the Sattilite when reaching that level and Mulitiply by 2
                 {
-                   satspeed[i] = speed.Next(10,10);
+                   satspeed[i] = speed1.Next(10,10*2);
                 }
 
-                if (levelnum == 4)
+                if (levelnum == 4)// Increases speed of the Sattilite when reaching that level and Mulitiply by 2
                 {
-                    satspeed[i] = speed.Next(20,20);
+                    satspeed[i] = speed1.Next(20,20*2);
                 }
 
-                if (levelnum == 5)
+                if (levelnum == 5)// Increases speed of the Sattilite when reaching that level and Mulitiply by 3
                 {
-                    satspeed[i] = speed.Next(25, 25);
+                    satspeed[i] = speed1.Next(25, 25*3);
                 }
 
-                if (levelnum == 6)
+                if (levelnum == 6)//Increases speed of the Sattilite when reaching that level and Mulitiply by 3
                 {
-                    satspeed[i] = speed.Next(32, 32);
+                    satspeed[i] = speed1.Next(32, 32*3);
                 }
 
-                if (levelnum >7)
+                if (levelnum >7)//Increases speed of the Sattilite when reaching that level and Mulitiply by 4
                 {
-                    satspeed[i] = speed.Next(32, 32 *4);
+                    satspeed[i] = speed1.Next(32, 32 *4);
                 }
             }
 
@@ -138,42 +141,46 @@ namespace Wonders_of_Space1
             
         }
 
-      
+
+
+       
+
+
         private void Tmraircraft_Tick_1(object sender, EventArgs e)
         {
             if (left)
             { // If the left arrow key is set to true
                 if (areaAircraft.X < 10)
-                { // If the surfer is within 10 of the left side
-                    areaAircraft.X = 10; // Set the surfer to 'bounce' of the side of the panel (at position 10 on the X axis)
+                { // If the Aircraft is within 10 of the left side
+                    areaAircraft.X = 10; // Set the Aircraft to 'bounce' of the side of the panel (at position 10 on the X axis)
                 }
                 else
                 {
-                    areaAircraft.X -= 9; // Else move the surfer 9 towards to the left in the panel
+                    areaAircraft.X -= 9; // Else move the Aircraft 9 towards to the left in the panel
                 }
             }
             if (right)
             { // If the right arrow key is set to true
                 if (areaAircraft.X > PnlGame.Width - 40)
-                { // If the surfer is within 10 of the right side
-                    areaAircraft.X = PnlGame.Width - 40; // Set the surfer to 'bounce' of the side of the panel (at position of 40 less than the PnlGame width)
+                { // If the Aircraft is within 10 of the right side
+                    areaAircraft.X = PnlGame.Width - 40; // Set the Aircraft to 'bounce' of the side of the panel (at position of 40 less than the PnlGame width)
                 }
 
                 else
                 {
-                    areaAircraft.X += 9; // Else move the surfer 9 towards to the right in the panel
+                    areaAircraft.X += 9; // Else move the Aircraft 9 towards to the right in the panel
                 }
             }
 
             if (up)
             { // If the up arrow key is set to true
                 if (areaAircraft.Y < 15)
-                { // If the surfer is within 15 of the top
-                    areaAircraft.Y = 15; // Set the surfer to 'bounce' of the side of the panel (at position of 15 from the top of the panel)
+                { // If the Aircraft is within 15 of the top
+                    areaAircraft.Y = 15; // Set the Aircraft to 'bounce' of the side of the panel (at position of 15 from the top of the panel)
                 }
                 else
                 {
-                    areaAircraft.Y -= 9; // Else move the surfer 9 towards to the top in the panel
+                    areaAircraft.Y -= 9; // Else move the Aircraft 9 towards to the top in the panel
                 }
             }
 
@@ -214,14 +221,16 @@ namespace Wonders_of_Space1
         {
             if (usermamevalid == 0)
             {
+
+
+
+                MessageBox.Show("Game Instructions is as following. You as the Player are trying to dodge the meteors and satellites of the game by useing the  arrow keys on the keyboard. You have 40 lives, and on a score of 20, the level will increase, and the speed of the meteors and satellites will increase to make it a bit difficult for you as the player. Just letting you know the game doesn't have a stop button,  the only way to stop is to die. Good Luck and I hope that you will succeed!!!  "); // Display the game over message, telling the user their level and score count
                 Tmrmeteor.Enabled = true;
                 Tmrsat.Enabled = true;
                 Tmraircraft.Enabled = true;
 
                 username.Enabled = false;
                 startbtn.Enabled = false;
-
-
             }
         }
 
@@ -235,19 +244,19 @@ namespace Wonders_of_Space1
 
                 if (areamet[i].IntersectsWith(areaAircraft))
                 { // If the surfer collides with any shark
-                    areamet[i].X = 25; // Move the shark back to the begining of the panel
+                    areamet[i].X = 25; // Move the meteors back to the begining of the panel
                     livesnum -= 1; // Reduce lives count by one
-                    lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
+                    lives.Text = livesnum.ToString(); // Display the score count on the Scorenum textbox
                     CheckLives();
                 }
 
 
 
                 if (areamet[i].X > PnlGame.Width)
-                { // If the shark reaches the end of the panel
+                { // If the Meteor reaches the end of the panel
                     scorenum += 1;
-                    score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
-                    areamet[i].X = -35; // Move the shark back to the begining of the panel
+                    score.Text = scorenum.ToString(); // Display the score count on the Scorenum textbox
+                    areamet[i].X = -35; // Move the meteor back to the begining of the panel
                     CheckScore();
                 }
             }
@@ -256,67 +265,19 @@ namespace Wonders_of_Space1
 
         }
 
-       
-
-        private void CheckScore()
-        { // Initiate the CheckScore method/ function
-            if (scorenum % 20 == 0)
-            { // If the score is divisible by 25
-                levelnum += 1; // Add one to level count
-                level.Text = levelnum.ToString(); // Convert the level to a string, then display it on the LvlTxt textbox
-
-
-                scorenum = 0; // Set the score count to 0
-                score.Text = scorenum.ToString(); // Convert the score to a string, then display it on the ScoreTxt textbox
-
-            }
-        }
-
-
-        private void Tmrsat_Tick_1(object sender, EventArgs e)
+        private void username_TextChanged_1(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 4; i++)
-            {
-
-                areasat[i].Y += satspeed[i];
-
-                if (areasat[i].IntersectsWith(areaAircraft))
-                { // If the surfer collides with any shark
-                    areasat[i].Y = 25; // Move the shark back to the begining of the panel
-                    livesnum -= 1; // Reduce lives count by one
-                    lives.Text = livesnum.ToString(); // Display the score count on the ScoreTxt textbox
-                    CheckLives();
-                }
-
-                if (areasat[i].Y > PnlGame.Height)
-                { // If the shark reaches the end of the panel
-                    scorenum += 1;
-                    score.Text = scorenum.ToString(); // Display the score count on the ScoreTxt textbox
-                    areasat[i].Y = -35; // Move the shark back to the begining of the panel
-                    CheckScore();
-                }
-
-            }
-
-            PnlGame.Invalidate();//meke the paint even fire to redraw the panel
-        }
-
-
-
-
-        private void username_TextChanged(object sender, EventArgs e)
-        { // On change up of the textbox
-            string context = username.Text; // Create a string with the value of the TbUsername value
+            string context = username.Text; // Create a string with the value of the username value
             bool isletter = true; // Create a bool that sets isletter to ture
 
             if (context == "")
             { // If the username textbox is empty
-                usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+                usermamevalid = 1; // Set the usernamevalid to 1, which disables the timers
             }
 
             else
             { // The username is not empty
-                usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+                usermamevalid = 0; // Set the usernamevalid to 0, which enables the timers
             }
 
             for (int i = 0; i < context.Length; i++)
@@ -348,6 +309,53 @@ namespace Wonders_of_Space1
                 usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
             }
         }
+
+        private void CheckScore()
+        { // Initiate the CheckScore method/ function
+            if (scorenum % 20 == 0)
+            { // If the score is divisible by 25
+                levelnum += 1; // Add one to level count
+                level.Text = levelnum.ToString(); // Convert the level to a string, then display it on the Lvelnum textbox
+
+
+                scorenum = 0; // Set the score count to 0
+                score.Text = scorenum.ToString(); // Convert the score to a string, then display it on the Scorenum textbox
+
+            }
+        }
+
+
+        private void Tmrsat_Tick_1(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= 4; i++)
+            {
+
+                areasat[i].Y += satspeed[i];
+
+                if (areasat[i].IntersectsWith(areaAircraft))
+                { // If the Aircraft collides with any sattillites or Meteors
+                    areasat[i].Y = 25; // Move the Sattllite back to the begining of the panel
+                    livesnum -= 1; // Reduce lives count by one
+                    lives.Text = livesnum.ToString(); // Display the score count on the Scorenum textbox
+                    CheckLives();
+                }
+
+                if (areasat[i].Y > PnlGame.Height)
+                { // If the shark reaches the end of the panel
+                    scorenum += 1;
+                    score.Text = scorenum.ToString(); // Display the score count on the Scorenum textbox
+                    areasat[i].Y = -35; // Move the sattelite back to the begining of the panel
+                    CheckScore();
+                }
+
+            }
+
+            PnlGame.Invalidate();//meke the paint even fire to redraw the panel
+        }
+
+
+
+
 
 
 

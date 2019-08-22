@@ -75,7 +75,6 @@
             this.score.Size = new System.Drawing.Size(100, 26);
             this.score.TabIndex = 1;
             this.score.Text = "0";
-          
             // 
             // lives
             // 
@@ -114,6 +113,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(100, 26);
             this.username.TabIndex = 5;
+            this.username.TextChanged += new System.EventHandler(this.username_TextChanged_1);
             // 
             // startbtn
             // 
