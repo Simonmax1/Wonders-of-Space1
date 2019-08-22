@@ -39,7 +39,8 @@ namespace Wonders_of_Space1
         bool left, right, up, down;
         
 
-        int usermamevalid = 0;
+        int usernamevalid = 0;
+        int numberlives = 0;
 
         int levelnum = 1;
         
@@ -219,7 +220,21 @@ namespace Wonders_of_Space1
 
         private void startbtn_Click(object sender, EventArgs e)
         {
-            if (usermamevalid == 0)
+            if (numberlives == 0)
+            {
+
+
+
+               
+                Tmrmeteor.Enabled = true;
+                Tmrsat.Enabled = true;
+                Tmraircraft.Enabled = true;
+
+                username.Enabled = false;
+                startbtn.Enabled = false;
+            }
+
+            if (usernamevalid == 0)
             {
 
 
@@ -265,6 +280,48 @@ namespace Wonders_of_Space1
 
         }
 
+        private void lives_TextChanged(object sender, EventArgs e)
+        {
+            string context = lives.Text;// Create a string with the value of the Live value
+            bool isnumber = true; //Creat a bool stes isnumber to true
+
+            if (context == "")
+            {// If the Lives textbox is empty
+                numberlives = 1;// Sat the Number of lives to 1, which disables the timers
+            }
+            else
+            { // If numberlives is not empty
+                numberlives = 0;// Set the Numberlives to 0,which enables the timer
+            }
+            for(int i = 0; i < context.Length; i++)
+            {
+                if(!char.IsNumber(context[i]))
+                {// If the current character is not a numbers
+                    isnumber = false; // Make isnumber false
+                    numberlives = 1; // Set the usernamevalid to 1, which disables the timers
+
+                }
+                else
+                {
+                    numberlives = 0; // Set the numberlives to 0, which enables the timers
+                }
+            }
+            // if not a letter clear the textbox and focus on it
+            // to enter name again
+            if (isnumber == false)
+            { // If isletter is equal to false 
+                lives.Clear(); // Remove all characters in the username textbox 
+                lives.Focus(); // Focuse the user onto the username textbox to set the user to editing the username
+
+                numberlives = 1; // Set the numberlives to 1, which disables the timer
+            }
+            else
+            {
+                numberlives = 0;// Set the numberlives to 0, which enables the timers
+            }
+
+        }
+
         private void username_TextChanged_1(object sender, EventArgs e)
         {
             string context = username.Text; // Create a string with the value of the username value
@@ -272,12 +329,12 @@ namespace Wonders_of_Space1
 
             if (context == "")
             { // If the username textbox is empty
-                usermamevalid = 1; // Set the usernamevalid to 1, which disables the timers
+                usernamevalid = 1; // Set the usernamevalid to 1, which disables the timers
             }
 
             else
             { // The username is not empty
-                usermamevalid = 0; // Set the usernamevalid to 0, which enables the timers
+                usernamevalid = 0; // Set the usernamevalid to 0, which enables the timers
             }
 
             for (int i = 0; i < context.Length; i++)
@@ -285,12 +342,12 @@ namespace Wonders_of_Space1
                 if (!char.IsLetter(context[i]))
                 { // If the current character is not a letter
                     isletter = false; // Make isletter false
-                    usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+                    usernamevalid = 1; // Set the usernamevalid to 1, which disables the timers
                 }
 
                 else
                 {
-                    usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+                    usernamevalid = 0; // Set the usernamevalid to 0, which enables the timers
                 }
             }
 
@@ -301,12 +358,12 @@ namespace Wonders_of_Space1
                 username.Clear(); // Remove all characters in the username textbox 
                 username.Focus(); // Focuse the user onto the username textbox to set the user to editing the username
 
-                usermamevalid = 1; // Set the usernamevalid to 1, which disables the user from selecting a difficulty
+                usernamevalid = 1; // Set the usernamevalid to 1, which disables the timers
             }
 
             else
             {
-                usermamevalid = 0; // Set the usernamevalid to 0, which enables the user to select a difficulty
+                usernamevalid = 0; // Set the usernamevalid to 0, which enables the timers
             }
         }
 
