@@ -30,6 +30,7 @@ namespace Wonders_of_Space1
         int scorenum = 0;
         int livesnum = 40;
         
+        
         int x2 =250, y2 = 100;//starting position of of the Aircraft
         // Load our Three images from bin,debug folder
         Image Aircraft = Image.FromFile(Application.StartupPath + @"\Aircraft.png");
@@ -40,7 +41,6 @@ namespace Wonders_of_Space1
         
 
         int usernamevalid = 0;
-        int numberlives = 0;
 
         int levelnum = 1;
         
@@ -220,20 +220,6 @@ namespace Wonders_of_Space1
 
         private void startbtn_Click(object sender, EventArgs e)
         {
-            if (numberlives == 0)
-            {
-
-
-
-               
-                Tmrmeteor.Enabled = true;
-                Tmrsat.Enabled = true;
-                Tmraircraft.Enabled = true;
-
-                username.Enabled = false;
-                startbtn.Enabled = false;
-            }
-
             if (usernamevalid == 0)
             {
 
@@ -244,6 +230,19 @@ namespace Wonders_of_Space1
                 Tmrsat.Enabled = true;
                 Tmraircraft.Enabled = true;
 
+                username.Enabled = false;
+                startbtn.Enabled = false;
+            }
+            if (livesnum == 0)
+            {
+
+
+
+               
+                Tmrmeteor.Enabled = true;
+                Tmrsat.Enabled = true;
+                Tmraircraft.Enabled = true;
+                lives.Enabled = false;
                 username.Enabled = false;
                 startbtn.Enabled = false;
             }
@@ -287,23 +286,23 @@ namespace Wonders_of_Space1
 
             if (context == "")
             {// If the Lives textbox is empty
-                numberlives = 1;// Sat the Number of lives to 1, which disables the timers
+                livesnum = 1;// Sat the Number of lives to 1, which disables the timers
             }
             else
             { // If numberlives is not empty
-                numberlives = 0;// Set the Numberlives to 0,which enables the timer
+                livesnum = 0;// Set the Numberlives to 0,which enables the timer
             }
             for(int i = 0; i < context.Length; i++)
             {
                 if(!char.IsNumber(context[i]))
                 {// If the current character is not a numbers
                     isnumber = false; // Make isnumber false
-                    numberlives = 1; // Set the usernamevalid to 1, which disables the timers
+                    livesnum = 1; // Set the usernamevalid to 1, which disables the timers
 
                 }
                 else
                 {
-                    numberlives = 0; // Set the numberlives to 0, which enables the timers
+                    livesnum = 0; // Set the numberlives to 0, which enables the timers
                 }
             }
             // if not a letter clear the textbox and focus on it
@@ -313,11 +312,11 @@ namespace Wonders_of_Space1
                 lives.Clear(); // Remove all characters in the username textbox 
                 lives.Focus(); // Focuse the user onto the username textbox to set the user to editing the username
 
-                numberlives = 1; // Set the numberlives to 1, which disables the timer
+                livesnum = 1; // Set the numberlives to 1, which disables the timer
             }
             else
             {
-                numberlives = 0;// Set the numberlives to 0, which enables the timers
+                livesnum = 0;// Set the numberlives to 0, which enables the timers
             }
 
         }
