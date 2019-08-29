@@ -28,7 +28,7 @@ namespace Wonders_of_Space1
         int[] satspeed = new int[5];
 
         int scorenum = 0;
-        int livesnum = 40;
+        int livesnum = 0;
         
         
         int x2 =250, y2 = 100;//starting position of of the Aircraft
@@ -222,8 +222,10 @@ namespace Wonders_of_Space1
         {
             if (usernamevalid == 0)
             {
-
-
+                int strung = int.Parse(lives.Text);
+                livesnum = strung; // Add one to level count
+                lives.Enabled = false;
+               
 
                 MessageBox.Show("Game Instructions is as following. You as the Player are trying to dodge the meteors and satellites of the game by useing the  arrow keys on the keyboard. You have 40 lives, and on a score of 20, the level will increase, and the speed of the meteors and satellites will increase to make it a bit difficult for you as the player. Just letting you know the game doesn't have a stop button,  the only way to stop is to die. Good Luck and I hope that you will succeed!!!  "); // Display the game over message, telling the user their level and score count
                 Tmrmeteor.Enabled = true;
@@ -236,7 +238,7 @@ namespace Wonders_of_Space1
             if (livesnum == 0)
             {
 
-
+                livesnum = 20;
 
                
                 Tmrmeteor.Enabled = true;
@@ -279,47 +281,7 @@ namespace Wonders_of_Space1
 
         }
 
-        private void lives_TextChanged(object sender, EventArgs e)
-        {
-            string context = lives.Text;// Create a string with the value of the Live value
-            bool isnumber = true; //Creat a bool stes isnumber to true
-
-            if (context == "")
-            {// If the Lives textbox is empty
-                livesnum = 1;// Sat the Number of lives to 1, which disables the timers
-            }
-            else
-            { // If numberlives is not empty
-                livesnum = 0;// Set the Numberlives to 0,which enables the timer
-            }
-            for(int i = 0; i < context.Length; i++)
-            {
-                if(!char.IsNumber(context[i]))
-                {// If the current character is not a numbers
-                    isnumber = false; // Make isnumber false
-                    livesnum = 1; // Set the usernamevalid to 1, which disables the timers
-
-                }
-                else
-                {
-                    livesnum = 0; // Set the numberlives to 0, which enables the timers
-                }
-            }
-            // if not a letter clear the textbox and focus on it
-            // to enter name again
-            if (isnumber == false)
-            { // If isletter is equal to false 
-                lives.Clear(); // Remove all characters in the username textbox 
-                lives.Focus(); // Focuse the user onto the username textbox to set the user to editing the username
-
-                livesnum = 1; // Set the numberlives to 1, which disables the timer
-            }
-            else
-            {
-                livesnum = 0;// Set the numberlives to 0, which enables the timers
-            }
-
-        }
+     
 
         private void username_TextChanged_1(object sender, EventArgs e)
         {

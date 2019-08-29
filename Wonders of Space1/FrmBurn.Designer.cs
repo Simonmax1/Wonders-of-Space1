@@ -82,7 +82,6 @@
             this.lives.Name = "lives";
             this.lives.Size = new System.Drawing.Size(100, 26);
             this.lives.TabIndex = 2;
-            this.lives.TextChanged += new System.EventHandler(this.lives_TextChanged);
             // 
             // label1
             // 
